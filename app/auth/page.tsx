@@ -23,14 +23,13 @@ const Auth: FC = () => {
 
 	const login = useCallback(async () => {
 		try {
-			console.log(process.env.DATABASE_URL)
 			await signIn('credentials', {
 				email: information.email,
 				password: information.password,
-				redirect: false,
-				callbackUrl: '/'
+				// redirect: false,
+				callbackUrl: '/profiles'
 			})
-			route.push('/')
+			// route.push('/profiles')
 		} catch (err) {
 			console.log(err)
 		}
@@ -43,11 +42,13 @@ const Auth: FC = () => {
 				name: information.name,
 				password: information.password
 			})
+
+			login()
 		}
 		catch (err) {
 			console.log(err)
 		}
-	}, [information])
+	}, [information, login])
 	return (
 		<div className='relative h-full w-full bg-[url("/images/hero.jpg")] bg-no-repeat bg-center bg-fixed bg-cover'>
 			<div className='bg-black w-full h-full lg:bg-opacity-50'>
@@ -73,11 +74,11 @@ const Auth: FC = () => {
 						</button>
 						<div className='flex items-center gap-4 mt-8 justify-center'>
 							<div className='w-10 h-10 bg-white rounded-full flex justify-center items-center cursor-pointer hover:opacity-80 transition'
-								onClick={() => signIn('google', { callbackUrl: '/' })}>
+								onClick={() => signIn('google', { callbackUrl: '/profiles' })}>
 								<FcGoogle size={30} />
 							</div>
 							<div className='w-10 h-10 bg-white rounded-full flex justify-center items-center cursor-pointer hover:opacity-80 transition'
-								onClick={() => signIn('github', { callbackUrl: '/' })}>
+								onClick={() => signIn('github', { callbackUrl: '/profiles' })}>
 								<FaGithub size={30} />
 							</div>
 						</div>
