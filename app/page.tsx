@@ -1,27 +1,26 @@
 'use client';
-import { NextPageContext } from 'next'
-import { getSession } from 'next-auth/react'
+// import { NextPageContext } from 'next'
+// import { getSession } from 'next-auth/react'
 import { Billboard, InfoModal, MovieList, Navbar } from './components';
 import { useCurrentUser, useFavorites, useInfoModalStore, useMovieList } from './hooks';
-export async function getServerSideProps (context: NextPageContext) {
-  const session = await getSession(context)
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/auth',
-        permanent: false
-      }
-    }
-  }
+// export async function getServerSideProps (context: NextPageContext) {
+//   const session = await getSession(context)
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: '/auth',
+//         permanent: false
+//       }
+//     }
+//   }
 
-  return {
-    props: {}
-  }
-}
+//   return {
+//     props: {}
+//   }
+// }
 export default function Home () {
   const { isOpen, closeModal } = useInfoModalStore();
 
-  const { data: user } = useCurrentUser()
   const { data: movies = [] } = useMovieList();
   const { data: favorites = [] } = useFavorites();
   return (
