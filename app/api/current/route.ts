@@ -15,7 +15,6 @@ export async function GET (req: NextApiRequest, res: NextApiResponse) {
 			status: 200,
 		})
 	} catch (err) {
-		console.log(err);
 		return NextResponse.json({ error: err }, {
 			status: 400,
 		})

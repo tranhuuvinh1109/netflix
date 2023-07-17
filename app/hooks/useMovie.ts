@@ -1,3 +1,4 @@
+'use client'
 import fetcher from '@/lib/fetcher'
 import useSWR from 'swr'
 
@@ -8,7 +9,6 @@ const useMovie = (id?: string) => {
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false
 	})
-	console.log('hook -->', id)
 	return { data, error, isLoading }
 }
 
