@@ -1,8 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiResponse } from 'next';
 import serverAuth from '@/lib/serverAuth';
 import { NextResponse } from 'next/server'
 
-export async function GET (req: NextApiRequest, res: NextApiResponse) {
+export async function GET (req: Request, res: NextApiResponse) {
 	if (req.method !== 'GET') {
 		return NextResponse.json({ error: 'Method GET' }, {
 			status: 405,

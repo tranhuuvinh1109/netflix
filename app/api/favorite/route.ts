@@ -45,41 +45,41 @@ export async function POST (req: Request, res: NextApiResponse) {
 	}
 }
 
-export async function DELETE (req: NextApiRequest, res: Response) {
-	if (req.method === 'DELETE') {
-		try {
-			const { currentUser } = await serverAuth();
+// export async function DELETE (req: Request, res: Response) {
+// 	if (req.method === 'DELETE') {
+// 		try {
+// 			const { currentUser } = await serverAuth();
 
-			const { movieId } = req.body;
+// 			const { movieId } = req.body;
 
-			const existingMovie = await prismadb.movie.findUnique({
-				where: {
-					id: movieId,
-				}
-			});
+// 			const existingMovie = await prismadb.movie.findUnique({
+// 				where: {
+// 					id: movieId,
+// 				}
+// 			});
 
-			if (!existingMovie) {
-				throw new Error('Invalid ID');
-			}
+// 			if (!existingMovie) {
+// 				throw new Error('Invalid ID');
+// 			}
 
-			const updatedFavoriteIds = without(currentUser.favoriteIds, movieId);
+// 			const updatedFavoriteIds = without(currentUser.favoriteIds, movieId);
 
-			const updatedUser = await prismadb.user.update({
-				where: {
-					email: currentUser.email || '',
-				},
-				data: {
-					favoriteIds: updatedFavoriteIds,
-				}
-			});
-			return NextResponse.json(updatedUser, {
-				status: 200,
-			})
+// 			const updatedUser = await prismadb.user.update({
+// 				where: {
+// 					email: currentUser.email || '',
+// 				},
+// 				data: {
+// 					favoriteIds: updatedFavoriteIds,
+// 				}
+// 			});
+// 			return NextResponse.json(updatedUser, {
+// 				status: 200,
+// 			})
 
-		} catch (err) {
-			return NextResponse.json({ error: err }, {
-				status: 500,
-			})
-		}
-	}
-}
+// 		} catch (err) {
+// 			return NextResponse.json({ error: err }, {
+// 				status: 500,
+// 			})
+// 		}
+// 	}
+// }
