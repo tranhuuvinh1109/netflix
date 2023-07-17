@@ -14,7 +14,6 @@ export async function GET (req: Request, res: NextApiResponse) {
 		await serverAuth();
 
 		const moviesCount = await prismadb.movie.count();
-		console.log('movies count -->', moviesCount)
 		const randomIndex = Math.floor(Math.random() * moviesCount);
 
 		const randomMovies = await prismadb.movie.findMany({

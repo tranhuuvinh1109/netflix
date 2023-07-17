@@ -10,12 +10,10 @@ interface PageProps {
 }
 const Watch: React.FC<PageProps> = ({ params }) => {
 	const router = useRouter();
-	console.log('routes --->', params)
 	const { movieId } = params;
 
 	const { data } = useMovie(movieId);
 
-	console.log('data details --->', data)
 
 	return (
 		<div className="h-screen w-screen bg-black">
