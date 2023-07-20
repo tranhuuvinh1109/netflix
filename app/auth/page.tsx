@@ -27,7 +27,7 @@ const Auth: FC = () => {
 				email: information.email,
 				password: information.password,
 				// redirect: false,
-				callbackUrl: '/profiles'
+				callbackUrl: '/'
 			})
 			// route.push('/profiles')
 		} catch (err) {
@@ -74,11 +74,11 @@ const Auth: FC = () => {
 						</button>
 						<div className='flex items-center gap-4 mt-8 justify-center'>
 							<div className='w-10 h-10 bg-white rounded-full flex justify-center items-center cursor-pointer hover:opacity-80 transition'
-								onClick={() => signIn('google', { callbackUrl: '/profiles' })}>
+								onClick={() => signIn('google', { callbackUrl: '/' })}>
 								<FcGoogle size={30} />
 							</div>
 							<div className='w-10 h-10 bg-white rounded-full flex justify-center items-center cursor-pointer hover:opacity-80 transition'
-								onClick={() => signIn('github', { callbackUrl: '/profiles' })}>
+								onClick={() => signIn('github', { callbackUrl: '/' })}>
 								<FaGithub size={30} />
 							</div>
 						</div>
