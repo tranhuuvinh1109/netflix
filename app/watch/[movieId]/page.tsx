@@ -1,14 +1,21 @@
 'use client'
 import React from 'react';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { useMovie } from '@/app/hooks';
+import { useSession } from 'next-auth/react';
 
 
 interface PageProps {
 	params: { movieId: string }
 }
 const Watch: React.FC<PageProps> = ({ params }) => {
+	const { } = useSession({
+		required: true,
+		onUnauthenticated () {
+			redirect('/auth')
+		}
+	})
 	const router = useRouter();
 	const { movieId } = params;
 
