@@ -11,6 +11,19 @@ const nextConfig = {
 		GOOGLE_CLIENT_ID: "329648410405-4r4oaq6f80ost7eghapuigdijstk8k8r.apps.googleusercontent.com",
 		GOOGLE_CLIENT_SECRET: "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",
 	},
+	async headers () {
+		return [
+			{
+				source: '/favicon.ico',
+				headers: [
+					{
+						key: 'Link',
+						value: '/images/netflix-icon.png',
+					},
+				],
+			},
+		];
+	},
 }
 
 module.exports = nextConfig
